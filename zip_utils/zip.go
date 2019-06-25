@@ -10,10 +10,6 @@ import (
 	"strings"
 )
 
-func maibn() {
-	exportKeystore()
-}
-
 func exportKeystore() (interface{}, error) {
 	fileToZip, err := os.Open("C:\\Users\\Usman\\zipTest\\Zipped.zip")
 	if err != nil {
