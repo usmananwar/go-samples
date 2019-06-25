@@ -1,25 +1,32 @@
-package main
+package ziputils
 
 import (
 	"archive/zip"
+	"fmt"
 	"io"
+	"io/ioutil"
 	"os"
 	"path/filepath"
 	"strings"
 )
 
-func main() {
-	directory := "C:\\Users\\Usman\\zipTest"
-	zippedFile := "C:\\Users\\Usman\\zipTest\\Zipped.zip"
-	error := Zip(directory, zippedFile)
-	if error != nil {
-		panic(error)
-	}
-	err := Unzip(zippedFile, "C:\\Users\\Usman\\zipTest\\Zipped")
+func maibn() {
+	exportKeystore()
+}
 
+func exportKeystore() (interface{}, error) {
+	fileToZip, err := os.Open("C:\\Users\\Usman\\zipTest\\Zipped.zip")
 	if err != nil {
-		panic(err)
+		return nil, err
 	}
+	body, err := ioutil.ReadAll(fileToZip)
+	if err != nil {
+		fmt.Println(err)
+	}
+
+	fmt.Println(len(body))
+
+	return body, nil
 }
 
 // Zip packages the given files into a zip file
